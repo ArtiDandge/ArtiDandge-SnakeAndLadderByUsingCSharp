@@ -23,24 +23,40 @@ namespace SnakeAndLadderProject
         {
             Console.WriteLine("Welcome to Snake and Ladder Project !");
             int PlayerPosition = 0;
-            int PlayerDice = rollDice();
-            int option = checkOption();
-            // Use Switch case for option
-            switch (option)
+
+            // repeat till win position i.e.till 100
+            while (PlayerPosition != 100)
             {
-                case 1:
-                    Console.WriteLine("Players not play");
-                    break;
-                case 2:
-                    Console.WriteLine("Player got the Ladder");
-                    break;
-                case 3:
-                    Console.WriteLine("Player got the Snake");
-                    break;
-                default:
-                    Console.WriteLine("Something Went Wrong");
-                    break;
+                int PlayerDice = rollDice();
+                int option = checkOption();
+                // Use Switch case for option
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine("Players not play");
+                        break;
+                    case 2:
+                        Console.WriteLine("Player got the Ladder");
+                        PlayerPosition += PlayerDice;
+                        break;
+                    case 3:
+                        Console.WriteLine("Player got the Snake");
+                        //In case player position moves below 0, then player starts from position 0 
+                        if ((PlayerPosition - PlayerDice) < 0)
+                        {
+                            PlayerPosition = 0;
+                        }
+                        else
+                        {
+                            PlayerPosition -= PlayerDice;
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Something Went Wrong");
+                        break;
+                }
             }
+            
         }
     }
 }
