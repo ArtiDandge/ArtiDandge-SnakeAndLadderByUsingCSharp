@@ -51,7 +51,7 @@ namespace SnakeAndLadderProject
                         }
                         break;
                     default:
-                        Console.WriteLine("Something Went Wrong");
+                        Console.WriteLine("Something Went Wrong ..........");
                         break;
                 }
             }
