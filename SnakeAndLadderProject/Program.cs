@@ -25,6 +25,7 @@ namespace SnakeAndLadderProject
             int PlayerPosition = 0;
             int WinPosition = 100;
             //repeat till win position i.e. till 100
+
             while (PlayerPosition != 100)
             {
                 int PlayerDice = rollDice();
@@ -46,6 +47,7 @@ namespace SnakeAndLadderProject
                         break;
                     case 3:
                         Console.WriteLine("Player got the Snake");
+                        //In case player position moves below 0, then player starts from position 0 
                         if ((PlayerPosition - PlayerDice) < 0)
                         {
                             PlayerPosition = 0;
@@ -56,7 +58,7 @@ namespace SnakeAndLadderProject
                         }
                         break;
                     default:
-                        Console.WriteLine("Something Went Wrong ..........");
+                        Console.WriteLine("Something Went Wrong");
                         break;
                 }
             }
