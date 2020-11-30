@@ -23,7 +23,7 @@ namespace SnakeAndLadderProject
         {
             Console.WriteLine("Welcome to Snake and Ladder Project !");
             int PlayerPosition = 0;
-            
+            int WinPosition = 100;
             //repeat till win position i.e. till 100
             while (PlayerPosition != 100)
             {
@@ -38,6 +38,11 @@ namespace SnakeAndLadderProject
                     case 2:
                         Console.WriteLine("Player got the Ladder");
                         PlayerPosition += PlayerDice;
+                        //ensure win position 100
+                        if (PlayerPosition > WinPosition)
+                        {
+                            PlayerPosition -= PlayerDice;
+                        }
                         break;
                     case 3:
                         Console.WriteLine("Player got the Snake");
@@ -55,7 +60,7 @@ namespace SnakeAndLadderProject
                         break;
                 }
             }
-            Console.WriteLine("Player is on Win Position i.e {0} ", PlayerPosition);
+            
         }
     }
 }
