@@ -22,16 +22,19 @@ namespace SnakeAndLadderProject
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Snake and Ladder Project !");
-            int PlayerPosition = 0;
-            int PlayerRollDiceCount = 0;
-
+            int Player1Position = 0;
+            int Player2Position = 0;
+            int Player1RollDiceCount = 0;
+            int Player2RollDiceCount = 0;
             int WinPosition = 100;
             //repeat till win position i.e. till 100
 
-            while (PlayerPosition != 100)
+            while (Player1Position != 100 || Player2Position != 100)
             {
-                int PlayerDice = rollDice();
-                PlayerRollDiceCount++;
+                int Player1Dice = rollDice();
+                Player1RollDiceCount++;
+                int Player2Dice = rollDice();
+                Player2RollDiceCount++;
                 int option = checkOption();
                 // Use Switch case for option
                 switch (option)
@@ -41,38 +44,62 @@ namespace SnakeAndLadderProject
                         break;
                     case 2:
                         Console.WriteLine("Player got the Ladder");
-                        PlayerPosition += PlayerDice;
+                        Player1Position += Player1Dice;
+                        Player2Position += Player2Dice;
                         //ensure win position 100
-                        if (PlayerPosition > WinPosition)
+                        if (Player1Position > WinPosition)
                         {
-                            PlayerPosition -= PlayerDice;
+                            Player1Position -= Player1Dice;
                         }
+                        else if (Player2Position > WinPosition)
+                        {
+                            Player2Position -= Player2Dice;
+                        }
+                        Console.WriteLine("Player1 position is now on {0}", Player1Position);
+                        Console.WriteLine("Player2 position is now on {0}", Player2Position);
                         break;
                     case 3:
                         Console.WriteLine("Player got the Snake");
                         //In case player position moves below 0, then player starts from position 0 
-                        if ((PlayerPosition - PlayerDice) < 0)
+                        if ((Player1Position - Player1Dice) < 0)
                         {
-                            PlayerPosition = 0;
+                            Player1Position = 0;
                         }
                         else
                         {
-                            PlayerPosition -= PlayerDice;
+                            Player1Position -= Player1Dice;
                         }
+                        if ((Player2Position - Player2Dice) < 0)
+                        {
+                            Player2Position = 0;
+                        }
+                        else
+                        {
+                            Player2Position -= Player2Dice;
+                        }
+                        Console.WriteLine("Player1 position is now on {0}", Player1Position);
+                        Console.WriteLine("Player2 position is now on {0}", Player2Position);
                         break;
                     default:
                         Console.WriteLine("Something Went Wrong");
                         break;
                 }
                 //Report the number of times the dice was played to win the game and also the position after every die role
-                if (PlayerPosition == WinPosition) 
+                if (Player1Position == WinPosition || Player2Position == WinPosition) 
                 {
-                    if (PlayerPosition == WinPosition)
+                    if (Player1Position == WinPosition)
                     {
 
-                        Console.WriteLine("----------Player won !----------");
-                        Console.WriteLine("Number of times dice was played by player to win the game is {0}", PlayerRollDiceCount);
-                        break;
+                        Console.WriteLine("----------Player1 won !----------");
+                        Console.WriteLine("Number of times dice was played by player to win the game is {0}", Player1RollDiceCount);
+                        Environment.Exit(0);
+                    }
+                    else if (Player2Position == WinPosition)
+                    {
+
+                        Console.WriteLine("----------Player2 won !----------");
+                        Console.WriteLine("Number of times dice was played by player to win the game is {0}", Player2RollDiceCount);
+                        Environment.Exit(0);
                     }
                 }
             }
