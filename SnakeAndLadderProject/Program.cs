@@ -23,8 +23,7 @@ namespace SnakeAndLadderProject
         {
             Console.WriteLine("Welcome to Snake and Ladder Project !");
             int PlayerPosition = 0;
-
-            // repeat till win position i.e.till 100
+            int PlayerRollDiceCount = 0;
 
             int WinPosition = 100;
             //repeat till win position i.e. till 100
@@ -32,6 +31,7 @@ namespace SnakeAndLadderProject
             while (PlayerPosition != 100)
             {
                 int PlayerDice = rollDice();
+                PlayerRollDiceCount++;
                 int option = checkOption();
                 // Use Switch case for option
                 switch (option)
@@ -64,8 +64,18 @@ namespace SnakeAndLadderProject
                         Console.WriteLine("Something Went Wrong");
                         break;
                 }
+                //Report the number of times the dice was played to win the game and also the position after every die role
+                if (PlayerPosition == WinPosition) 
+                {
+                    if (PlayerPosition == WinPosition)
+                    {
+
+                        Console.WriteLine("----------Player won !----------");
+                        Console.WriteLine("Number of times dice was played by player to win the game is {0}", PlayerRollDiceCount);
+                        break;
+                    }
+                }
             }
-            
-        }
+        }            
     }
 }
