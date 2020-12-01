@@ -23,13 +23,12 @@ namespace SnakeAndLadderProject
         {
             Console.WriteLine("Welcome to Snake and Ladder Project !");
             int PlayerPosition = 0;
-<<<<<<< HEAD
 
             // repeat till win position i.e.till 100
-=======
+
             int WinPosition = 100;
             //repeat till win position i.e. till 100
->>>>>>> 47ec8a05c7186eea3c390a5c645416e8aa50bdd0
+
             while (PlayerPosition != 100)
             {
                 int PlayerDice = rollDice();
