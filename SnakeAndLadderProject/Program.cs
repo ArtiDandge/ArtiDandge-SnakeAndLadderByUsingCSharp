@@ -4,6 +4,7 @@ namespace SnakeAndLadderProject
 {
     class Program
     {
+
         // Function to roll a dice and get number between 1-6
         public static int rollDice()
         {
@@ -19,6 +20,7 @@ namespace SnakeAndLadderProject
 
             return random.Next(1, 4);
         }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Snake and Ladder Project !");
@@ -27,8 +29,8 @@ namespace SnakeAndLadderProject
             int Player1RollDiceCount = 0;
             int Player2RollDiceCount = 0;
             int WinPosition = 100;
-            //repeat till win position i.e. till 100
 
+            //repeat till win position i.e. till 100
             while (Player1Position != 100 || Player2Position != 100)
             {
                 int Player1Dice = rollDice();
@@ -36,6 +38,7 @@ namespace SnakeAndLadderProject
                 int Player2Dice = rollDice();
                 Player2RollDiceCount++;
                 int option = checkOption();
+
                 // Use Switch case for option
                 switch (option)
                 {
@@ -84,19 +87,18 @@ namespace SnakeAndLadderProject
                         Console.WriteLine("Something Went Wrong");
                         break;
                 }
+
                 //Report the number of times the dice was played to win the game and also the position after every die role
                 if (Player1Position == WinPosition || Player2Position == WinPosition) 
                 {
                     if (Player1Position == WinPosition)
                     {
-
                         Console.WriteLine("----------Player1 won !----------");
                         Console.WriteLine("Number of times dice was played by player to win the game is {0}", Player1RollDiceCount);
                         Environment.Exit(0);
                     }
                     else if (Player2Position == WinPosition)
                     {
-
                         Console.WriteLine("----------Player2 won !----------");
                         Console.WriteLine("Number of times dice was played by player to win the game is {0}", Player2RollDiceCount);
                         Environment.Exit(0);
